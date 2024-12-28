@@ -1,0 +1,17 @@
+C:\Users\Berat\Desktop\Hastahane\DataAccess\bin\Debug\net7.0\DataAccess.deps.json
+C:\Users\Berat\Desktop\Hastahane\DataAccess\bin\Debug\net7.0\DataAccess.runtimeconfig.json
+C:\Users\Berat\Desktop\Hastahane\DataAccess\bin\Debug\net7.0\DataAccess.dll
+C:\Users\Berat\Desktop\Hastahane\DataAccess\bin\Debug\net7.0\DataAccess.pdb
+C:\Users\Berat\Desktop\Hastahane\DataAccess\bin\Debug\net7.0\Entities.dll
+C:\Users\Berat\Desktop\Hastahane\DataAccess\bin\Debug\net7.0\Entities.pdb
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\DataAccess.csproj.AssemblyReference.cache
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\DataAccess.AssemblyInfo.cs
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\DataAccess.csproj.CopyComplete
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\DataAccess.dll
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\refint\DataAccess.dll
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\DataAccess.pdb
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\DataAccess.genruntimeconfig.cache
+C:\Users\Berat\Desktop\Hastahane\DataAccess\obj\Debug\net7.0\ref\DataAccess.dll

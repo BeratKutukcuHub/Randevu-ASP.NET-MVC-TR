@@ -1,0 +1,23 @@
+@model RegisterDto
+
+<div class="container-sm">
+    <div class="d-flex justify-content-center">
+        <h6 class="display-5 my-3">Giriş Yap</h6>
+    </div>
+    <form method="post">
+        <div class="my-5 text-center">
+            <label class="lead" asp-for="@Model.UserName">Kullanıcı Adınızı Giriniz</label>
+            <input class="form-control" type="text" asp-for="@Model.UserName">
+        </div>
+
+        <div class="my-1 text-center">
+            <label class="lead" asp-for="@Model.Password">Şifrenizi Giriniz</label>
+            <input class="form-control" type="text" asp-for="@Model.Password">
+        </div>
+
+        <div class="btn-group-sm d-flex justify-content-center my-5">
+            <button class="btn btn-outline-primary" asp-action="Login">Giriş Yap</button>
+            <a class="btn btn-outline-primary" asp-action="CreateUser">Hesabın Yoksa Kayıt Ol</a>
+        </div>
+    </form>
+</div>

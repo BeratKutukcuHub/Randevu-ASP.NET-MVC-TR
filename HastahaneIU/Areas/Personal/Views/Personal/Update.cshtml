@@ -1,0 +1,58 @@
+@using Entities.Infrastructer
+@model EntityPerson
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="d-flex justify-content-center my-2"><h6 class="display-6">Profil Güncelle</h6></div>
+            <form   method="post" enctype="multipart/form-data" >
+                        
+                        <div>
+                    <img src="@Model.ProfileImage" alt=".." class="img-thumbnail rounded-5 shadow">
+                    <input type="file" name="file" class="form-control my-2" >
+                    <input type="hidden" name="files" asp-for="@Model.ProfileImage">
+                        </div>
+                    
+                <input type="hidden" asp-for="@Model.PersonName">
+                <input type="hidden" asp-for="@Model.EntityPersonId">
+                <input type="hidden" asp-for="@Model.EntitySection">
+                <input type="hidden" asp-for="@Model.EntitySectionId">
+                <input type="hidden" asp-for="@Model.PersonLastName">
+                <input type="hidden" asp-for="@Model.Role">
+                <input type="hidden" asp-for="@Model.Active">
+                
+                <label class="form-control my-3" aria-disabled="true" 
+                asp-for="@Model.PersonName">@Model.PersonName @Model.PersonLastName - @Model.Role</label>
+                <div>
+                    <label class="lead" asp-for="@Model.Age">Yaşınızı Güncelleyiniz.</label>
+                    <input type="text" class="form-control my-3" asp-for="@Model.Age">
+                </div>
+                
+                <div>
+                    <label class="lead" asp-for="@Model.E_Mail">E_Mail Hesabınızı Güncelleyiniz. </label>
+                    <input type="text" class="form-control my-3" asp-for="@Model.E_Mail">
+                </div>
+                
+                <div>
+                    <label class="lead" asp-for="@Model.SocialMedia1">Sosyal Medya Hesabınızı Güncelleyiniz.</label>
+                    <input type="text" class="form-control my-3" asp-for="@Model.SocialMedia1">
+                </div>
+                
+                <div>
+                    <label class="lead" asp-for="@Model.SocialMedia2">Sosyal Medya Hesabınızı Güncelleyiniz.</label>
+                    <input type="text" class="form-control my-3" asp-for="@Model.SocialMedia2">
+                </div>
+                
+                <div class="btn-group d-flex justify-content-center">
+                    <div class="btn-group">
+                    <button asp-action="Update" type="submit" class="btn btn-warning">Güncelle</button>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-danger">Tamamla ve Personel Sayfasına Geri Dön</a>
+                    </div>
+                    
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

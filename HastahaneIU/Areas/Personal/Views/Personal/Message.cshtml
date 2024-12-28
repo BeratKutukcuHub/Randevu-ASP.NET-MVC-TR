@@ -1,0 +1,35 @@
+@model EntityPerson
+<div class="container-sm">
+    <h6 class="my-3 display-6 d-flex justify-content-center">Yönetici ile İletişim</h6>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+
+    <form class="my-5" method="post" >
+
+        <div class="d-flex justify-content-center">
+            <textarea name="format" class="form-control" rows="10" cols="50" ></textarea>
+            <input type="hidden" name="Id" value="@Model.EntityPersonId">
+        </div>
+        <div class="btn-group d-flex justify-content-center">
+            <button class="btn btn-success"  type="submit"
+            asp-controller="Session" asp-action="SetMessage" >Onayla ve Gönder</button>
+            <a class="btn btn-warning"  asp-controller="Home" asp-action="Index">Geri Dön</a>
+        </div>
+    </form>
+        <div class="d-flex justify-content-center">
+            <form method="post">
+                <button class="btn btn-outline-primary my-4"  
+                asp-controller="Session" asp-action="MyGetMessagesForAdmin"
+                type="submit" name="Id" value="@Model.EntityPersonId">Mesajlarımı Listele</button>
+            </form>
+            
+        </div>
+    
+
+        </div>
+        
+    </div>
+    
+    <div class="col-md-2"></div>
+</div>

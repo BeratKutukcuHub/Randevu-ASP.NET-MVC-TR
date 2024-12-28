@@ -1,0 +1,67 @@
+@using HastahaneIU.Models
+@model List<PersonMessageForAdmin>
+    <div class="container-sm">
+<div class="row">
+            <div class="col-md-1"></div>
+        <div class="col-md-10 my-3">
+            <div class=" d-flex justify-content-around my-3">
+                @if(Model is not null)
+            {
+                 @foreach(var item in Model)
+                 {
+                    @if(item.Person is not null )
+                    {
+                        @if(item.Message is not null)
+                        {
+                            <div class="card my-2 text-center bg-black bg-opacity-75 p-3 text-light" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title my-2">@item.Person.PersonName @item.Person.PersonLastName</h5>
+                    <h6 class="card-subtitle my-2 text-body-secondary">@item.Person.Role  @item.Person.E_Mail</h6>
+                    <p class="card-text my-2">@item.Message</p>
+                    <div class="btn-group-sm d-flex justify-content-around">
+                        @if(item.Approve is true)
+                        {
+                            <button class="btn btn-danger" disabled>Onay Durumu</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-success" disabled>Onaylandı</button>
+                        }
+                        <form method="post">
+                            <input type="hidden" name="Id" value="@item.Person.EntityPersonId">
+                            <input type="hidden" name="Message" value="@item.Message">
+                            <button type="submit" asp-action="Clear" class="btn btn-outline-light" >Sil</button>
+                        </form>
+                        
+                    </div>
+                    
+                    </div>
+                    </div>
+                        }
+                    
+                    }
+                    else
+                    {
+                        <h6 class="display-6">Görüntülenecek Veri Bulunmamakta.</h6>
+                    }
+                    
+                 }
+            }
+            else
+            {
+                <h6 class="display-6">Görüntülenecek Veri Bulunmamakta.</h6>
+            }
+            </div>
+            
+              
+        
+           
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+<div>
+   
+</div>
+    </div>
+    

@@ -1,0 +1,45 @@
+@model List<EntityPersonDto>
+
+    <div class="container-fluid">
+        <div class="row my-3">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Personel Numarası</th>
+      <th scope="col">Personel Ad Soyad</th>
+      <th scope="col">Personel Bölümü</th>
+      <th scope="col">Personel Kıdem</th>
+      <th scope="col">Kayıt Tarihi</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var item in Model)
+     {
+    <tr>
+      <th>@item.EntityPersonId</th>
+      <td>@item.PersonName @item.PersonLastName</td>
+      <td>@item.PersonSectionName</td>
+      <td>@item.Role</td>
+      <td>@item.CreateTime</td>
+      <th><div class="btn-group-sm">
+      <a class="btn btn-danger" asp-route-Id="@item.EntityPersonId" asp-action="Remove">Sil</a>
+      <a class="btn btn-warning" asp-route-Id="@item.EntityPersonId" asp-action="Update">Güncelle</a>
+      </div></th>
+      
+    </tr>
+     }
+   
+  </tbody>
+</table>
+<div class="d-flex justify-content-center"><a class="btn btn-success" asp-action="Add">Ekle</a></div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+<div>
+    
+     
+</div>

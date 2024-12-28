@@ -1,0 +1,26 @@
+@model List<SectionAndDepartmentInclude>
+<div class="container-sm">
+<table class="table table-hover table-warning bg-opacity-50 my-5">
+    <thead>
+        <tr>
+        <th>Hasta Adı</th>
+        <th>Bölüm Adı</th>
+        <th>Alınan Doktor</th>
+        <th>Alınan Tarih - Saat</th>
+        <th>Durum</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Appointment.UserName</td>
+                <td>@item.SectionName</td>
+                <td>@item.PersonName @item.PersonLastName</td>
+                <td>@item.Appointment.DateInAppointment</td>
+                <td>@item.Appointment.Active</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

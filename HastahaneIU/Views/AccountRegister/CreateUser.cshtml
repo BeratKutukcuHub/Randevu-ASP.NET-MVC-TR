@@ -1,0 +1,31 @@
+@model UserDtoForCreate
+<div class="container-sm">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form method="post" class="my-5">
+        <input type="hidden" asp-for="@Model.Roles">
+        <div class="my-3">
+            <label class="lead" asp-for="@Model.UserName">Kullanıcı Adı Giriniz</label>
+            <input class="form-control" type="text" asp-for="@Model.UserName">
+        </div>
+        <div class="my-3">
+            <label class="lead" asp-for="@Model.Password">Şifre Giriniz</label>
+            <input class="form-control" type="text" asp-for="@Model.Password">
+        </div>
+
+        <div class="my-3">
+            <label class="lead" asp-for="@Model.ConfirmPassword">Şifre Doğrulayınız</label>
+            <input class="form-control" type="text" asp-for="@Model.ConfirmPassword">
+        </div>
+
+        <div class="btn-group-sm d-flex justify-content-center">
+            <button class="btn btn-success" type="submit" asp-action="CreateUser">Kayıt Ol</button>
+            <a class="btn btn-outline-primary" asp-action="Login">Geri Dön</a>
+        </div>
+    </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    
+</div>

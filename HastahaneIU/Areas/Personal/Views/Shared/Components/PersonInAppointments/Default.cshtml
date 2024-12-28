@@ -1,0 +1,27 @@
+@model List<EntityAppointment>
+
+<div class="container-sm">
+    <table class="table table-hover my-3">
+        <thead>
+            <tr>
+                <th>Hasta Adı</th>
+                <th>Randevu Tarihi</th>
+                <th>Durum</th>
+                <th colspan="1"></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.UserName</td>
+                    <td>@item.DateInAppointment</td>
+                    <td>@item.Active</td>
+                    </tr>
+                    
+                }
+            
+        </tbody>
+    </table>
+</div>

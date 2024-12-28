@@ -1,0 +1,140 @@
+﻿@model DateModelForAppointment
+  
+  <div class="container-sm">
+
+    <div class="row">
+      <div class="col-md-1"></div>
+
+      <div class="col-md-10 text-light">
+        
+        <div class="btn-group-sm my-5 p-3 border-success bg-dark" style="border-radius: 10px;">
+
+        <form method="post" >
+        <input type="hidden" asp-for="@Model.EntitySectionId">
+        <input type="hidden" asp-for="@Model.DayId">
+        <input type="hidden" asp-for="@Model.MonthId">
+        <input type="hidden" asp-for="@Model.HourId">
+        <h6 class="lead d-flex justify-content-center">Bir Department Seçiniz</h6>
+        <input type="hidden" name="Forms" value="form1">
+        <select name="EntityDepartmentId" class="form-control my-3">
+          @foreach(var itemDepartments in ViewBag.Departments)
+          {
+            <option value="@itemDepartments.EntityDepartmentId">@itemDepartments.DepartmentName</option>
+          }
+        </select>
+        <div class="d-flex justify-content-center"><button class="btn btn-secondary" type="submit" asp-action="Appointment">Ara</button></div>
+        </form>
+
+        <form method="post">
+        
+        <h6 class="lead d-flex justify-content-center mt-2">Bir Bölüm Seçiniz</h6>
+        <select name="EntitySectionId"  class="form-control my-3">
+          @foreach(var itemSections in ViewBag.Sections)
+          {
+            <option value="@itemSections.EntitySectionId">@itemSections.SectionName</option>
+          }
+        </select>
+        
+        
+        <input type="hidden" asp-for="@Model.EntityDepartmentId">
+        <input type="hidden" asp-for="@Model.HourId">
+        <h6 class="lead d-flex justify-content-center">Bir Gün Seçiniz</h6>
+        <input type="hidden" name="Forms" value="form3">
+        <div class="btn btn-group-sm">
+          @foreach(var item in ViewBag.ThisModel)
+          {
+            if(item.DayId < DateTime.Today.Day&& item.MonthId == DateTime.Today.Month)
+            {
+              <button asp-action="Appointment"
+               style="cursor: help;"
+               class="btn btn-secondary disabled my-1" type="submit" name="DayId" value="@item.DayId">@item.DayId @item.DayName</button>
+            }
+            else
+            {
+              <button asp-action="Appointment" class="btn btn-outline-secondary my-1" type="submit" name="DayId" value="@item.DayId">@item.DayId @item.DayName</button>
+            }
+            
+          }
+          </div>
+          </form>
+
+          <form method="post">
+          <div class="btn-group-sm d-flex justify-content-center">
+            <input type="hidden" name="Forms" value="form2">
+            <input type="hidden" asp-for="@Model.EntityDepartmentId">
+            <input type="hidden" asp-for="@Model.EntitySectionId">
+            <input type="hidden" asp-for="@Model.DayId">
+            <input type="hidden" asp-for="@Model.HourId">
+             <button type="submit" 
+             asp-action="Appointment" name="MonthId" value="@DateTime.Today.Month" class="btn btn-primary my-1">Bu Ay</button>
+
+             <button type="submit" 
+             asp-action="Appointment" name="MonthId" value="@(DateTime.Today.Month + 1)" class="btn btn-outline-primary my-1">
+             Gelecek Ay</button>
+          </div>
+          </form>
+
+          <form method="post">
+        
+            <input type="hidden" name="Forms" value="form4">
+        <input type="hidden" asp-for="@Model.EntitySectionId">
+        <input type="hidden" asp-for="@Model.EntityDepartmentId">
+        <input type="hidden" asp-for="@Model.DayId">
+        <input type="hidden" asp-for="@Model.MonthId">
+          <div class="btn-group d-flex justify-content-around my-3">
+            @for(int i = 9; i<=16; i++)
+            {
+              if(i == 12)
+              {
+                i++;
+              }
+              
+              <input class="btn btn-outline-secondary" asp-action="Appointment" type="submit" 
+              name="HourId" value="@(i)"/>
+
+              <form method="post" >
+              <input type="hidden" name="Forms" value="form5">      
+              <input type="hidden" asp-for="@Model.EntitySectionId">
+              <input type="hidden" asp-for="@Model.EntityDepartmentId">
+              <input type="hidden" asp-for="@Model.DayId">
+              <input type="hidden" asp-for="@Model.MonthId">    
+              <input type="hidden" name="MinuteId" value="30">   
+              <button class="btn btn-outline-secondary" asp-action="Appointment" type="submit" name="HourId" value="@(i)">
+              @($"{i}.30")</button>
+               </form> 
+              
+  
+            }
+          </div>
+          </form>
+        @if(User.Identity.IsAuthenticated)
+        {
+          <form method="post">
+        <input type="hidden" asp-for="@Model.EntityDepartmentId">
+        <input type="hidden" asp-for="@Model.EntitySectionId">
+        <input type="hidden" asp-for="@Model.DayId">
+        <input type="hidden" asp-for="@Model.MonthId">
+        <input type="hidden" asp-for="@Model.HourId">
+        <input type="hidden" asp-for="@Model.MinuteId">
+            <div class="btn-group-sm d-flex justify-content-center">
+              <button asp-action="Appointment" name="Forms" value="formfinish" class="btn btn-success" style="margin-right: 10px;">Onayla ve Bitir</button>
+              <button asp-controller="Home" asp-action="Index" style="margin-left: 10px;" class="btn btn-danger">Geri Dön</button>
+            </div>
+          </form>
+        }
+        else
+        {
+          <div class="d-flex justify-content-center"><h6 class="lead">Öncelikle Giriş Yapmalısınız</h6></div>
+          <div class="btn-group-sm d-flex justify-content-center">
+              <a asp-controller="AccountRegister" asp-action="Login" class="btn btn-primary" style="margin-right: 10px;"
+              >Giriş Yap</a>
+              <a asp-controller="Home" asp-action="Index" style="margin-left: 10px;" class="btn btn-danger">Geri Dön</a>
+            </div>
+        }
+        </div>
+      </div>
+
+      <div class="col-md-1"></div>
+    </div>
+
+  </div>

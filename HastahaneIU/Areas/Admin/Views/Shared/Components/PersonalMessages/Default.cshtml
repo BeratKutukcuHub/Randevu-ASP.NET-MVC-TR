@@ -1,0 +1,48 @@
+@using HastahaneIU.Models
+@model List<PersonMessageForAdmin>
+
+<div>
+     <form method="post">
+    @if(Model is not null)
+            {
+
+            
+                 @for(int item=0; item<=Model.Count-1; item++)
+                 {
+                    @if(Model[item].Person is not null)
+                    {
+                       
+                    <div class="card my-1 text-center" style="width: 18rem;">
+                    <div class="card-body">
+                    <h5 class="card-title">@Model[item].Person.PersonName @Model[item].Person.PersonLastName</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary">@Model[item].Person.Role  @Model[item].Person.E_Mail</h6>
+                    <p class="card-text">@Model[item].Message</p>
+                    <div class="btn-group-sm">
+                        @if(Model[item].Approve is true)
+                        {
+                            <button type="submit" asp-action="GetMessagesForAdmin" asp-route-Id="@item"
+                            aria-disabled="false" class="btn btn-success">Onayla</button>
+                        }
+                        
+                        else
+                        {
+                            <button class="btn btn-danger disabled">Onaylandı</button>
+                        }
+                        
+                    </div>
+                    </div>
+                    </div>
+                    }
+                    else
+                    {
+                        <h6 class="display-6">Görüntülenecek Veri Bulunmamakta.</h6>
+                    }
+                    
+                 }
+            }
+            else
+            {
+                <h6 class="display-6">Görüntülenecek Veri Bulunmamakta.</h6>
+            }
+            </form>
+</div>

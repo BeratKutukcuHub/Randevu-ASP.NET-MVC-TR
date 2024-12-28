@@ -1,0 +1,32 @@
+@model EntitySection
+<div class="container-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+<form method="post">
+    <input type="hidden" asp-for="EntitySectionId">
+    <div class="my-3">
+        <label class="lead my-2" asp-for="SectionName">Bölüm Adında Değişiklik</label>
+        <input class="form-control" type="text" asp-for="SectionName">
+    </div>
+    <label class="lead my-2" asp-for="SectionName">Departman Değişikliği</label>
+        <select class="form-control" name="EntityDepartmentId" >
+            @foreach(var item in ViewBag.departments)
+            {
+                <option  value="@item.EntityDepartmentId">@item.DepartmentName</option>
+            }
+        </select>
+    <div class="my-3 d-flex justify-content-center">
+        <div class="btn-group">
+            <button class="btn btn-outline-success" type="submit" asp-action="UpdateSection">Onayla</button>
+            <a asp-action="Index" class="btn btn-danger">Geri Dön ve İptal Et</a>
+        </div>
+    </div>
+</form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+</div>

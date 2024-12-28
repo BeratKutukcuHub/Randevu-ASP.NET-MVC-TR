@@ -1,0 +1,44 @@
+<div class="text-black">
+    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+  <div class="container-sm">
+    <div class="">
+        <a asp-controller="Home" asp-action="Index" class="navbar-brand text-light " style="font-size: 30px;">
+        <strong>Kemal Savcı Hastahanesi</strong></a>
+    
+          <a class="text-light  m-2" asp-action="Index" asp-controller="Appointment">Randevu Al</a>
+         @if(User.IsInRole("User"))
+         {
+          <a asp-controller="Appointment" asp-action="GetAppointment" class="text-light m-2">Randevularım</a> 
+         }
+    </div>
+    
+      <div>
+        @if(!User.Identity.IsAuthenticated)
+        {
+          <a asp-controller="AccountRegister" class="btn btn-outline-danger" asp-action="Login">Giriş Yap</a>
+        }
+        else
+        {
+          @if(User.IsInRole("User"))
+        { 
+          <a  asp-controller="AccountRegister" class="btn btn-outline-danger" asp-action="Logout">Çıkış Yap</a>
+          
+        }
+        
+        @if(User.IsInRole("Admin"))
+        {
+          <a class="btn btn-outline-info" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin Panel</a>
+          <a  asp-controller="AccountRegister" class="btn btn-outline-danger" asp-action="Logout">Çıkış Yap</a>
+        }
+        @if(User.IsInRole("Personal"))
+        {
+          <a class="btn btn-outline-success" asp-area="Personal" asp-controller="Home" asp-action="Index">Personel Panel</a>
+          <a  asp-controller="AccountRegister" class="btn btn-outline-danger" asp-action="Logout">Çıkış Yap</a>
+        }
+        }
+        
+      </div>
+    
+  </div>
+</nav>
+</div>

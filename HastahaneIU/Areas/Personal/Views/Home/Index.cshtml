@@ -1,0 +1,65 @@
+@model UserAndPerson
+<div class="container-sm">
+    <div class="d-flex justify-content-center">
+        <h6 class="display-6 my-5">Sayın, @Model.Person.PersonName @Model.Person.PersonLastName Hoş Geldiniz</h6>
+    </div>
+    <div class="row">
+        <div class="col-md-4 my-2">
+            <div class="card p-3 bg-opacity-50 bg-warning text-dark" style="width: 20rem;">
+  <img src="@Model.Person.ProfileImage" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h3 class="card-title">@Model.Person.PersonName @Model.Person.PersonLastName </h3>
+    <h6>@Model.Person.Role : @ViewBag.SectionName</h6>
+    <p class="card-text my-3 lead ">E-Mail : @(Model.Person.E_Mail == string.Empty? "Bilinmmiyor" : Model.Person.E_Mail)</p>
+    <p class="card-text my-3 lead">Yaş : @(Model.Person.Age == string.Empty? "Bilinmmiyor" : Model.Person.Age)</p>
+    @if(Model.Person.Active is true)
+    {
+        <button disabled class="btn btn-success">Aktif</button>
+    }
+    <p class="card-text"></p>
+    <p class="card-text"></p>
+    <div class="btn-group-sm d-flex">
+        <a asp-controller="Personal" asp-action="Update" class="btn btn-dark">Profil Ayarlarınızı Gözden Geçirin</a>
+        <form method="get">
+        <button asp-action="UpdatePassword" type="submit" name="UserName" value="@Model.User.UserName" 
+        class="btn btn-danger">Şifre Değişikliği</button>
+        </form>
+    </div>
+    
+  </div>
+</div>
+        </div>
+        <div class="col-md-4 my-2">
+<div class="card p-3 bg-opacity-25 bg-warning text-dark" style="width: 22rem;">
+  <div class="card-body">
+    <h3 class="card-title my-2">Randevuları Görüntüle</h3>
+    <h6 class="card-subtitle mb-2 text-body-secondary lead my-2">Randevu Sayısı : @ViewBag.Appointment</h6>
+    <p class="card-text my-2">Randevuları Görüntülemek ve Üzerinde İşlem Yapmak İçin Devam Edin</p>
+    <form method="post">
+    <button name="entityPersonId" value="@Model.Person.EntitySectionId" type="submit" 
+    asp-action="GetAppointments"
+    class="card-link btn btn-outline-primary">Randevu Listesi</button>
+    </form>
+    
+  </div>
+</div>
+
+        </div>
+        <div class="col-md-4 my-2 ">
+  <div class="card p-3  bg-danger text-light" style="width: 22rem;">
+  <div class="card-body">
+    <h5 class="card-title my-2">Mesajlarım</h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary lead ">Mesajlarımı Listele veya Yeni Bir Tane Oluştur</h6>
+    <form method="post">
+      <button class="btn btn-dark" asp-controller="Personal" 
+      asp-action="Message" name="Id" value="@Model.Person.EntityPersonId">Mesaj Gönder veya Listele</button>
+    </form>
+      
+  </div>
+</div>
+        </div>
+            
+        
+
+    </div>
+</div>

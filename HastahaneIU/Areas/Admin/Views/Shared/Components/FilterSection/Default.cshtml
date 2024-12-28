@@ -1,0 +1,15 @@
+@model List<EntityDepartment>
+<div>
+    <form method="post"  >
+        <label class="lead">Lütfen Departman Bilgisi Seçerek Bölümleri Listeleyin.</label>
+        <select  name="Id" class="form-control my-2">
+            @foreach(var item in Model)
+            {
+                <option value="@item.EntityDepartmentId">@item.DepartmentName</option>
+            }
+        </select>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-secondary" asp-action="FilterSections">Ara</button>
+        </div>
+    </form>
+</div>

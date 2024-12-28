@@ -1,0 +1,43 @@
+@model EntityPerson
+<div class="form-group">
+    <div class="d-flex justify-content-center my-3"><h6 class="display-6">Personel Giriş/Kayıt</h6></div>
+    <div class="container-sm">
+
+        <form method="post" asp-action="Add">
+            <div class="my-2">
+            <label asp-for="PersonName" class="lead">Personel Adını Giriniz</label>
+            <input type="text" asp-for="PersonName" class="form-control">
+            </div>
+
+            <div class="my-2">
+            <label asp-for="PersonLastName" class="lead">Personel Soyadını Giriniz</label>
+            <input type="text" asp-for="PersonLastName" class="form-control">
+            </div>
+
+            <div class="my-2">
+            <label asp-for="EntitySectionId" class="lead">Personel Bölümünü Giriniz</label>
+            <select asp-for="EntitySectionId" class="form-select">
+                @foreach(var item in ViewBag.Sections)
+                {
+                    <option value="@item.EntitySectionId">@item.SectionName</option>
+                }
+            </select>
+            </div>
+
+             <div class="my-3">
+            <label class="lead" asp-for="Role">Role Seçiniz</label>
+            <div>
+            <input class="form-check-input" type="radio" value="Doktor" name="Role"> Doktor
+            <input class="form-check-input" type="radio" value="Asistan" name="Role"> Asistan
+            </div>
+            
+            </div>
+            <div class="d-flex justify-content-center btn-group-sm">
+                <button class="btn btn-success" type="submit">Onayla</button>
+                <a class="btn btn-dark" asp-controller="Home" asp-action="Index">Geri Dön</a>
+            </div>
+            
+        </form>
+        
+    </div>
+</div>

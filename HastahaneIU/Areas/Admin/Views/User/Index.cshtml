@@ -1,0 +1,78 @@
+@using HastahaneIU.Areas.Model
+@model List<UserAndRole>
+    
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="d-flex justify-content-center my-3"><h6 class="display-6">Kullanıcı Bilgilerini Görüntüle</h6></div>
+    <table class="table table-warning table-hover my-3 borderred-5" >
+        <th>#</th>
+        <th>Kullanıcı Adı</th>
+        <th>Kullanıcı Soyadı</th>
+        <th>Role</th>
+        <td colspan="5">-</td>
+    <tbody>
+    @foreach(var item in Model)
+    {
+        if(item.User.UserName!="admin"&&item.Role !="Personal")
+        {
+            <tr>
+                <td>@item.User.Id</td>
+                <td>@item.User.UserName</td>
+                <td>-</td>
+                <td>@item.Role</td>
+                <td>
+                    <div class="btn-group-sm">
+                        <form method="post">
+                        <button type="submit" name="Id" value="@item.User.Id" 
+                        asp-action="GetUser" class="btn btn-secondary">Detaylar</button>
+                         <button type="submit" name="Id" value="@item.User.Id" asp-route-Id="@item.User.Id" asp-action="GetRemove" 
+                                class="btn btn-danger">Sil</button>
+                        </form>
+                        
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+    </table>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex justify-content-center my-3"><h6 class="display-6">Personel Bilgilerini Görüntüle</h6></div>
+    <table class="table table-striped table-hover my-3">
+        <th>#</th>
+        <th>Kullanıcı Adı</th>
+        <th>Kullanıcı Soyadı</th>
+        <th>Role</th>
+        <td colspan="1"></td>
+    
+    @foreach(var item in Model)
+    {
+        <tbody>
+        @if(item.User.UserName!="admin"&&item.Role !="User")
+        {
+            <td>@item.User.Id</td>
+            <td>@item.PersonInfo.PersonName</td>
+            <td>@item.PersonInfo.PersonLastName</td>
+            <td>@item.PersonInfo.Role</td>
+            <td>
+                <div class="btn-group-sm">
+            <form method="post">
+                        <button type="submit" name="Id" value="@item.User.Id" 
+                        asp-action="GetUser" class="btn btn-secondary">Detaylar</button>
+                         
+                        </form>
+            </div>  
+            </td>
+        }
+        </tbody>
+    }
+    </table>
+        </div>
+    </div>
+    
+
+    
+</div>
+

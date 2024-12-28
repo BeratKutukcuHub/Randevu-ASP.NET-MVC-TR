@@ -1,0 +1,56 @@
+@model List<EntitySection>
+<div class="d-flex justify-content-center my-3">
+    <h6 class="display-6">Bölüm Bilgileri Güncelleme</h6>
+</div>
+
+<div class="container-sm">
+    @await Component.InvokeAsync("FilterSection")
+
+    <div>
+        <div class="container-fluid">
+            <div class="row my-3">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                   @if(Model.Count <= 0 || Model is null)
+                   {
+                    <div class="d-flex justify-content-center">
+                        <h6 class="display-6"> Herhangi Bir Veri Girişi Bulunmamaktadır  </h6>
+                    </div>
+                   }
+                   else
+                   {
+                     <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Bölüm Numarası</th>
+                                <th scope="col">Bölüm Ad Soyad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                                @foreach (var sections in Model)
+                                {
+                                    <tr>
+                                        <th>@sections.EntitySectionId</th>
+                                        <td>@sections.SectionName</td>
+                                        <td>
+                                            <div class="btn-group">
+                                               <a class="btn btn-outline-secondary" asp-route-Idies="@sections.EntitySectionId" asp-action="UpdateSection">Güncelle</a>
+                                                
+                                                <a class="btn btn-danger" asp-route-Id="@sections.EntitySectionId" asp-action="RemoveSection">Sil</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                        </tbody>
+                    </table>
+                   }
+                   <div class="d-flex justify-content-center" >
+                    <a class="btn btn-success" asp-action="AddSection" >Yeni Bölüm Başvurusu</a>
+                   </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    </div>
+</div>

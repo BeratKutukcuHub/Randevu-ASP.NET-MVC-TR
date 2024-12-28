@@ -1,0 +1,105 @@
+﻿@model dynamic
+<div class="container-fluid">
+    <div class="d-flex justify-content-center my-5">
+        <h6 class="display-6"></h6>
+    </div>
+    
+      
+      <div class="row">
+        <div class="col-md-12">
+            <div class="row my-sm-5">
+                <div class="col-md-3"><div class="card bg-opacity-75 bg-success text-light">
+      <div class="card-body">
+        <h5 class="card-title display-6">Departman (@Model.departments.Count)</h5>
+        @foreach(var item in Model.departmentsInfo)
+        {
+            if(item.EntityDepartmentId <= 2)
+            {
+                <h6 class="card-title">@(item.DepartmentName)</h6>
+            }
+            
+            if(item.EntityDepartmentId == 3)
+            {
+                <h6 class="card-title">@(item.DepartmentName)...</h6>
+            }
+        }
+        
+        <p class="card-text lead">Departman Bilgisi.</p>
+      </div>
+    </div></div>
+                
+                <div class="col-md-3">
+                    <div class="card bg-opacity-25 bg-black text-black">
+      <div class="card-body">
+        <h5 class="card-title display-6">Bölüm (@Model.sections.Count)</h5>
+        @foreach(var item in Model.sectionInfo)
+        {
+            if(item.EntitySectionId <= 2)
+            {
+                <h6 class="card-title">@(item.SectionName)</h6>
+            }
+            
+            if(item.EntitySectionId == 3)
+            {
+                <h6 class="card-title">@(item.SectionName)...</h6>
+            }
+        }
+        <hr>
+        <p class="card-text lead">Bölüm Bilgilerini Üzerinde İşlemler Yapmak İçin Devam Et.</p>
+        <a asp-controller="Section" asp-action="Index" class="btn btn-primary">Bölüm Bilgilerini Görüntüle</a>
+      </div>
+    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card  bg-warning text-black">
+      <div class="card-body">
+        <h5 class="card-title display-6">Personel (@Model.persons.Count)</h5>
+        @foreach(var item in Model.personInfo)
+        {
+            if(item.EntityPersonId <= 2)
+            {
+                <h6 class="card-title">@(item.PersonName)</h6>
+            }
+            
+            if(item.EntityPersonId == 3)
+            {
+                <h6 class="card-title">@(item.PersonName)...</h6>
+            }
+        }
+        <hr>
+        <p class="card-text lead">Personel Bilgilerini Üzerinde İşlemler Yapmak İçin Devam Et.</p>
+        <a asp-controller="Personal" asp-action="Index" class="btn btn-secondary">Personel Bilgilerini Görüntüle</a>
+      </div>
+    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card  bg-danger text-light">
+      <div class="card-body">
+        @{ var counts = Model.users.Count-1; }
+        <h5 class="card-title display-6">Kullanıcı - Personel (@counts)</h5>
+        <hr class="text-black">
+        @foreach(var item in Model.userInfo)
+        {
+            if(item.UserName != "admin")
+            {
+                <h6 class="card-title">@(item.UserName)</h6>
+            }
+                
+        }
+        
+        <p class="card-text lead">Kullanıcı Bilgilerini Üzerinde İşlemler Yapmak İçin Devam Et.</p>
+        <a asp-controller="User" asp-action="Index" class="btn btn-light text-black" >Kullanıcı Bilgilerini Görüntüle</a>
+      </div>
+    </div>
+                </div>
+            </div>
+            
+    
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 d-flex justify-content-center">
+            <a class="btn btn-primary" asp-action="GetMessagesForAdmin">Gelen Mesajları Görüntüle</a>
+        </div>
+      </div>
+</div>

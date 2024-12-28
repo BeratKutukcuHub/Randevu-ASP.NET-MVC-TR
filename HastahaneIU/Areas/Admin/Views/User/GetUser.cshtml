@@ -1,0 +1,50 @@
+@using HastahaneIU.Areas.Model
+@model UserAndRole
+<div class="container-sm">
+    <form class="my-3">
+        <div class="d-flex justify-content-center"><h6 class="display-6">Kullanıcı Bilgileri</h6></div>
+        <div class="my-1">
+            <label >Kullanıcı Adı</label>
+            <input type="text" class="form-control" disabled value="@Model.User.UserName">
+        </div>
+        <div class="my-3">
+            <label >Kullanıcı E-Mail</label>
+            <input type="text" class="form-control" disabled value="@Model.User.Email">
+        </div>
+        <div class="my-3">
+            <label >Kullanıcı Telefon Numarası</label>
+            <input type="text" class="form-control" disabled value="@Model.User.PhoneNumber">
+        </div>
+        @if(Model.PersonInfo is not null)
+        {
+        <div class="d-flex justify-content-center my-2"><h6 class="display-6">Personel Bilgileri</h6></div>  
+        <div class="my-2">
+            <label >Personel Rol</label>
+            <input type="text" class="form-control" disabled value="@Model.PersonInfo.Role">
+        </div>
+        <div class="my-2">
+            <label >Personel Departman</label>
+            <input type="text" class="form-control" disabled value="@Model.DepartmentName">
+        </div>
+        <div class="my-2">
+            <label >Personel Bölüm</label>
+            <input type="text" class="form-control" disabled value="@Model.SectionName">
+        </div>
+        <div class="my-2">
+            <label >Personel Yaş</label>
+            <input type="text" class="form-control" disabled value="@Model.PersonInfo.Age">
+        </div>
+       
+        <div class="my-2">
+            <label >Personel E-Mail</label>
+            <input type="text" class="form-control" disabled value="@Model.PersonInfo.E_Mail">
+        </div>
+         <div class="my-2">
+            <label >Personel Oluşturulma Tarihi</label>
+            <input type="text" class="form-control" disabled value="@Model.PersonInfo.CreateTime">
+        </div>
+        }
+        <div class="d-flex justify-content-center"><a asp-action="Index" class="btn btn-outline-danger ">Geri Dön</a></div>
+        
+    </form>
+</div>
