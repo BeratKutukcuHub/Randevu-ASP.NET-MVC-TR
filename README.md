@@ -16,13 +16,13 @@ Session Management: Kullanıcı oturumları
 Kurulum: Proje kurulumunu yapabilmek için aşağıdaki adımları takip edebilirsiniz:
 
 1. Projeyi Klonlayın
-git clone https://github.com/your-repository-url.git
+git clone https://github.com/BeratKutukcuHub/Randevu-ASP.NET-MVC-TR
 cd project-directory
 
 3. Bağımlılıkları Yükleyin
 Projede kullanılan paketleri yüklemek için aşağıdaki komutu çalıştırın:
-
 dotnet restore
+
 3. Veritabanı Migrasyonunu Uygulayın
 Veritabanı şemasını oluşturmak için Entity Framework Core migrasyonlarını kullanın. Bunun için aşağıdaki komutu çalıştırabilirsiniz:
 
